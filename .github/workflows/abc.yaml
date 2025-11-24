@@ -32,7 +32,7 @@ jobs:
  
       # Terraform Init & Plan
       - name: Terraform Init & Plan
-        working-directory: RootModule
+        working-directory: .
         run: |
           terraform init
           terraform plan -out=tfplan
@@ -76,11 +76,11 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: terraform-plan
-          path: RootModule
+          path: .
  
       # Apply Terraform Plan
       - name: Terraform Apply
-        working-directory: RootModule
+        working-directory: .
         run: |
           ls -l  # Debug: confirm tfplan exists
           terraform init   # ✅ Required to restore providers and backend
