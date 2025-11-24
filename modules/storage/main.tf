@@ -10,4 +10,11 @@ resource "azurerm_storage_account" "storage" {
     prevent_destroy       = true
     ignore_changes        = [tags]
   }
+ public_network_access_enabled = false
+ 
+  network_rules {
+    default_action = "Deny"
+    bypass         = ["AzureServices"]
+    ip_rules       = []
+  }
 }
